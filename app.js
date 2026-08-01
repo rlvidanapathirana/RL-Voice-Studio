@@ -541,7 +541,16 @@ function previewTTSVoice(id) {
   // Set UI immediately
   setVoicePreviewState(id, 'loading');
 
-  speakText(`ආයුබෝවන් මම ${v.name}. මගේ කටහඬ තෝරගන්න කැමතිද ඔයා?`, true)
+  let previewText = "";
+  if (v.lang === 'English') {
+    const cleanEnName = v.nameEn ? v.nameEn.replace(/\s*\(.*?\)\s*/g, '') : v.name.replace(/\s*\(.*?\)\s*/g, '');
+    previewText = `Welcome! I am ${cleanEnName}. Would you like to select my voice?`;
+  } else {
+    const cleanSiName = v.name.replace(/\s*\(.*?\)\s*/g, '');
+    previewText = `ආයුබෝවන් මම ${cleanSiName}. මගේ කටහඬ තෝරගන්න කැමතිද ඔයා?`;
+  }
+
+  speakText(previewText, true)
     .catch(err => {
       console.error("Preview error:", err);
       showToast('❌ Preview failed: ' + err.message);
@@ -1838,7 +1847,10 @@ function showTTSProgress(show, label, pct, estimatedTime = null) {
   if (estimatedTime && timeEl) {
     timeEl.style.display = 'block';
     ttsProgressTimeLeft = estimatedTime;
-    timeEl.textContent = `Estimated time: ${ttsProgressTimeLeft}s`;
+    const m = Math.floor(ttsProgressTimeLeft / 60);
+    const s = ttsProgressTimeLeft % 60;
+    const timeStr = m > 0 ? `${m}m ${s}s` : `${s}s`;
+    timeEl.textContent = `Estimated time: ${timeStr}`;
     
     let currentPct = pct || 0;
     const targetPct = 95;
@@ -1850,7 +1862,10 @@ function showTTSProgress(show, label, pct, estimatedTime = null) {
         timeEl.textContent = `Almost done, finalizing audio...`;
         clearInterval(ttsProgressInterval);
       } else {
-        timeEl.textContent = `Estimated time: ${ttsProgressTimeLeft}s`;
+        const m = Math.floor(ttsProgressTimeLeft / 60);
+        const s = ttsProgressTimeLeft % 60;
+        const timeStr = m > 0 ? `${m}m ${s}s` : `${s}s`;
+        timeEl.textContent = `Estimated time: ${timeStr}`;
         currentPct = Math.min(98, currentPct + step);
         if (pctEl) pctEl.textContent = Math.round(currentPct) + '%';
         if (ring) {
