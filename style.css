@@ -325,6 +325,7 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   width: 100%; box-sizing: border-box; max-width: 100%;
+  min-width: 0;
 }
 .card:hover { border-color: var(--border-glow); box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15); }
 .card-input { position: relative; overflow: hidden; }
@@ -579,8 +580,8 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
 .slider-accent:hover { background: rgba(147,51,234,0.2); }
 
 /* === TTS STUDIO GRID (legacy compat) === */
-.studio-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; margin-bottom: 60px; }
-@media (max-width: 1024px) { .studio-grid { grid-template-columns: 1fr; } }
+.studio-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; margin-bottom: 60px; min-width: 0; width: 100%; }
+@media (max-width: 1024px) { .studio-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* === TEXTAREA (PREMIUM INPUT) === */
 .textarea-wrap {
