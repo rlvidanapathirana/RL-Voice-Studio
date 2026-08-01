@@ -686,6 +686,7 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   background: rgba(10, 14, 23, 0.5); border: 1px solid var(--border-md);
   border-radius: var(--r-lg); padding: 24px; position: relative; overflow: hidden;
   transition: var(--bounce); backdrop-filter: blur(20px);
+  min-width: 0; max-width: 100%; box-sizing: border-box;
 }
 .voice-card::before {
   content: ''; position: absolute; inset: 0; opacity: 0.1;
@@ -813,9 +814,9 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   .hero-cta { justify-content: center; gap: 12px; }
 
   .studio-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; min-width: 0; }
-  .vc-layout { grid-template-columns: 1fr; }
-  .voice-cards { grid-template-columns: 1fr; }
-  .guide-grid { grid-template-columns: 1fr; }
+  .vc-layout { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+  .voice-cards { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+  .guide-grid { grid-template-columns: minmax(0, 1fr); min-width: 0; }
 
   .slider-row { gap: 12px; }
   .main-actions { flex-direction: column; gap: 12px; }
@@ -835,7 +836,7 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   .panel-title { font-size: 1.8rem; }
   .card { padding: 20px; border-radius: var(--r-lg); }
   .toast { width: 90%; text-align: center; justify-content: center; }
-  .preset-grid { grid-template-columns: 1fr; }
+  .preset-grid { grid-template-columns: minmax(0, 1fr); min-width: 0; }
   .voice-card { padding: 16px; }
   .dropzone { padding: 40px 10px; }
 }
