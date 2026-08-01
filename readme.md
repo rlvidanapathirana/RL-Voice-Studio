@@ -1,57 +1,53 @@
-﻿# Path Nirvana Sinhala TTS Dataset
+# RL Voice Studio 🎙️✨
 
-![Cover Photo](https://pnfo.github.io/sinhala-tts-dataset/cover-photo.jpg)
- 
-High Quality Multi Speaker Sinhala dataset for Text to speech algorithm training - specially designed for deep learning algorithms
+**The ultimate premium Sinhala AI Text-to-Speech and Voice Changer platform.**
 
-Currently there is a lack of publically availble tts datasets for sinhala language of enough length for Sinhala language. This dataset which has 6248 sentences with 13.8 hours of recordings will help mitigate some of these problems. These multi speaker voice recodings were done during the second quarter of 2023. Some effort has been taken to capture most of the rarely used syllables in the Sinhala language, specially those with Sanskrit and Pali origins. There could be some errors (recording not matching with prompt). Though should be rare, if you find some do feel free to contribute to this repository.
+RL Voice Studio is a modern, web-based application that offers high-quality Sinhala AI voice synthesis alongside an advanced AI-powered voice changer. Designed with a sleek, ultra-premium glassmorphic UI, it delivers a seamless user experience for content creators, developers, and voice enthusiasts.
 
-### There are two speakers
-- Male voice Ven. Mettananda - around 5200 voice clips - 11.8 hours in length
-- Female voice Mrs. Oshadi - around 1000 voice clips - 2 hours in length
+## 🌟 Features
 
-### DEMO
-I have trained [a VITS TTS model](https://github.com/pathnirvana/coqui-tts) using the dataset and samples from the synthesis are now available [here](https://pnfo.github.io/sinhala-tts-dataset/)
+### 🗣️ Advanced AI Text-to-Speech (TTS)
+- **Multi-Engine Support:** Choose from top-tier TTS engines including Microsoft Edge Neural, Meta MMS (Offline), Dialog VITS, and Google Free TTS.
+- **Premium Voices:** Features ultra-realistic voices like Aravindi, Kanishka, and more.
+- **Fine-Grained Controls:** Adjust Speech Speed, Pitch, and Volume in real-time.
+- **Instant Playback & Download:** Generate, preview, and download your synthesized audio instantly.
 
-## How to use
-- You can download the compressed tar file from the Releases which contains the `wavs` folder with all the audio clips
+### 🎭 Neural Voice Changer
+- **RMVPE Technology:** Uses state-of-the-art RMVPE F0 extraction for incredibly realistic Male-to-Female and Female-to-Male voice conversion via HuggingFace AI models.
+- **Multiple Presets:** Transform your voice into Natural, Female, Soft Female, Bright Female, Deep Male, Child, Robot, Radio DJ, and Giant.
+- **Record or Upload:** Speak directly into your microphone or upload existing audio files.
 
-## Stats
-- Number of Recordings: 6248
-- Total Length: 13.7 hours
-- Maximum Length: 15 seconds
-- Minumum Length: 2 seconds
-- Number of Unique Characters: 54 roman
-- List of Roman Characters: ` !'(),-.:;=?abcdefghijklmnoprstuvyæñāēīōśşūǣḍḥḷṁṅṇṉṛṝṭ`
-- Silences have been removed from both the beginning and the end of the recordings
-- Sample Rate 22050Hz and 16-bit PCM encoded similar to the `ljspeech` dataset
+### 💎 Premium User Interface
+- **Ultra-Modern Design:** Features a beautiful dark mode UI with glassmorphism, animated gradients, and sweeping shines.
+- **Responsive Layout:** Works perfectly on both desktop and mobile devices.
 
-### Output from the create-dataset script for the two releases
-#### v2.0
-```bash
-Total labels => count: 6449, length: 13.9 hours, average length: 7.78
-Outliers labels => count: 6399, length: 13.8 hours, average length: 7.78
-Used labels => count: 6248, length: 13.7 hours, average length: 7.89
-characters=" !'(),-.:;=?abcdefghijklmnoprstuvyæñāēīōśşūǣḍḥḷṁṅṇṉṛṝṭ"
-characters=" !'(),-.:;=?[]ංඃඅආඇඈඉඊඋඌඍඑඒඓඔඕඖකඛගඝඞඟචඡජඣඤඥටඨඩඪණඬතථදධනඳපඵබභමඹයරලවශෂසහළෆ්ාැෑිීුූෘෙේෛොෝෞෲ‍‘’“”"
-```
-#### v2.1
-```bash
-Total labels => count: 6449, length: 13.9 hours, average length: 7.78
-Outliers labels => count: 6399, length: 13.8 hours, average length: 7.78
-Used labels => count: 6386, length: 13.8 hours, average length: 7.77
-characters=" !'(),-.:;=?abcdefghijklmnoprstuvyæñāēīōśşūǣḍḥḷṁṅṇṉṛṝṭ"
-characters=" !'(),-.:;=?[]ංඃඅආඇඈඉඊඋඌඍඑඒඓඔඕඖකඛගඝඞඟචඡජඣඤඥටඨඩඪණඬතථදධනඳපඵබභමඹයරලවශෂසහළෆ්ාැෑිීුූෘෙේෛොෝෞෲ‍‘’“”"
-```
+## 🚀 Getting Started
 
-## metadata.csv
-- contains a subset of the recordings which are less than 15 seconds long in the `ljspeech` format
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- NPM or Yarn
 
-The first version of this dataset contained around 7 hours of speech from a single speaker. It has since been moved to the `old dataset` folder
+### Installation
 
-See LICENSE.txt file for license information. GPL. The voices belong to a respected buddhist monk and and a lady who donated their voices. Therefore permission is only granted for non-obscene, non-offensive speech generation.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rlvidanapathirana/RL-Voice-Studio.git
+   ```
+2. Navigate into the directory and install dependencies:
+   ```bash
+   cd RL-Voice-Studio
+   npm install
+   ```
+3. Start the local server:
+   ```bash
+   node server.js
+   ```
+4. Open your browser and go to `http://localhost:5050`.
 
-If you have any questions or want to share your TTS training results contact me.
+## 🛠️ Technology Stack
+- **Frontend:** Vanilla JavaScript, HTML5, CSS3 (Custom Glassmorphism Framework)
+- **Backend/Proxy:** Node.js, Express, Axios
+- **AI Integration:** HuggingFace Spaces (@gradio/client) for Neural Voice Conversion
 
-Copyright 2021 Path Nirvana Foundation (path.nirvana@gmail.com)
-
+---
+*Crafted with ❤️ for the Sinhala Community by the RL Voice Studio Team.*
