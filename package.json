@@ -1,0 +1,21 @@
+{
+  "name": "text-to-speech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@diffusionstudio/vits-web": "^1.0.3",
+    "@gradio/client": "^2.4.0",
+    "cors": "^2.8.6",
+    "edge-tts-universal": "^1.4.0",
+    "express": "^5.2.1",
+    "ws": "^8.21.1"
+  }
+}
