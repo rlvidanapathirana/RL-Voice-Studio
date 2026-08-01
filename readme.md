@@ -7,7 +7,7 @@ RL Voice Studio is a modern, web-based application that offers high-quality Sinh
 ## 🌟 Features
 
 ### 🗣️ Advanced AI Text-to-Speech (TTS)
-- **Multi-Engine Support:** Choose from top-tier TTS engines including Microsoft Edge Neural, Meta MMS (Offline), Dialog VITS, and Google Free TTS.
+- **Multi-Engine Support:** Choose from top-tier TTS engines including Microsoft Edge Neural, Meta MMS (Offline), VITS, and Google Free TTS.
 - **Premium Voices:** Features ultra-realistic voices like Aravindi, Kanishka, and more.
 - **Fine-Grained Controls:** Adjust Speech Speed, Pitch, and Volume in real-time.
 - **Instant Playback & Download:** Generate, preview, and download your synthesized audio instantly.
@@ -50,4 +50,4 @@ RL Voice Studio is a modern, web-based application that offers high-quality Sinh
 - **AI Integration:** HuggingFace Spaces (@gradio/client) for Neural Voice Conversion
 
 ---
-*Crafted with ❤️ for the Sinhala Community by the RL Voice Studio Team.*
+*Crafted with ❤️ for the Sinhala Community by the V.P.R. Lakshan Vidanapathirana.*
