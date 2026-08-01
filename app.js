@@ -439,7 +439,7 @@ function renderVoicePills() {
         : '';
       pill.innerHTML = `
         <span class="pill-avatar">${locked ? '🔒' : v.avatar}</span>
-        <span>${v.name}</span>
+        <span class="pill-name">${v.name}</span>
         <span class="pill-badge" style="background:${v.badgeColor}22;color:${v.badgeColor}">${v.badge}</span>`;
       pill.addEventListener('click', () => selectVoice(v.id));
       container.appendChild(pill);
