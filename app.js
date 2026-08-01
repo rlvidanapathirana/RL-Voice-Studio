@@ -640,7 +640,7 @@ async function speakText(text, isPreview = false) {
         generatedBlob = await speakLocalMMS(text, v); 
         break;
       case 'dialog-vits':     
-        showTTSProgress(true, "Connecting to Lakshan Voice Lab's RL Voice Server...", 20);
+        showTTSProgress(true, "Connecting to Lakshan Voice Lab's RL Voice Server... (It will take some time, please wait)", 20);
         generatedBlob = await speakDialogVITS(text, v); 
         break;
       case 'google-free':     
