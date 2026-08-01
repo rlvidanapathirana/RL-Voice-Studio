@@ -636,11 +636,11 @@ async function speakText(text, isPreview = false) {
         generatedBlob = await speakEdgeTTS(text, v); 
         break;
       case 'local-mms':       
-        showTTSProgress(true, 'Loading AI Model...', 15);
+        showTTSProgress(true, 'Loading AI Model...', 15, Math.max(5, Math.ceil(text.length * 0.1)));
         generatedBlob = await speakLocalMMS(text, v); 
         break;
       case 'dialog-vits':     
-        showTTSProgress(true, "Connecting to Lakshan Voice Lab's RL Voice Server... (It will take some time, please wait)", 20);
+        showTTSProgress(true, "Connecting to Lakshan Voice Lab's RL Voice Server...", 20, Math.max(8, Math.ceil(text.length * 0.15)));
         generatedBlob = await speakDialogVITS(text, v); 
         break;
       case 'google-free':     
@@ -1805,23 +1805,62 @@ function showToast(msg) {
 // ═══════════════════════════════════════════════════════════
 //  TTS PROGRESS OVERLAY
 // ═══════════════════════════════════════════════════════════
-function showTTSProgress(show, label, pct) {
+let ttsProgressInterval = null;
+let ttsProgressTimeLeft = 0;
+
+function showTTSProgress(show, label, pct, estimatedTime = null) {
   const overlay = document.getElementById('ttsProgressOverlay');
   if (!overlay) return;
+  
+  clearInterval(ttsProgressInterval);
+  const timeEl = document.getElementById('ttsProgressTime');
+  
   if (!show) {
     overlay.style.display = 'none';
+    if(timeEl) timeEl.style.display = 'none';
     return;
   }
+  
   overlay.style.display = 'flex';
   const pctEl = document.getElementById('ttsProgressPct');
   const labelEl = document.getElementById('ttsProgressLabel');
   const ring = document.getElementById('ttsProgressRing');
+  
+  const circumference = 2 * Math.PI * 38; // r=38
+  
   if (pctEl) pctEl.textContent = Math.round(pct || 0) + '%';
   if (labelEl) labelEl.textContent = label || 'Processing...';
   if (ring) {
-    const circumference = 2 * Math.PI * 38; // r=38
     const offset = circumference - (circumference * (pct || 0) / 100);
     ring.style.strokeDashoffset = offset;
+  }
+  
+  if (estimatedTime && timeEl) {
+    timeEl.style.display = 'block';
+    ttsProgressTimeLeft = estimatedTime;
+    timeEl.textContent = `Estimated time: ${ttsProgressTimeLeft}s`;
+    
+    let currentPct = pct || 0;
+    const targetPct = 95;
+    const step = (targetPct - currentPct) / estimatedTime;
+    
+    ttsProgressInterval = setInterval(() => {
+      ttsProgressTimeLeft--;
+      if (ttsProgressTimeLeft <= 0) {
+        timeEl.textContent = `Almost done, finalizing audio...`;
+        clearInterval(ttsProgressInterval);
+      } else {
+        timeEl.textContent = `Estimated time: ${ttsProgressTimeLeft}s`;
+        currentPct = Math.min(98, currentPct + step);
+        if (pctEl) pctEl.textContent = Math.round(currentPct) + '%';
+        if (ring) {
+            const offset = circumference - (circumference * currentPct / 100);
+            ring.style.strokeDashoffset = offset;
+        }
+      }
+    }, 1000);
+  } else if (timeEl) {
+    timeEl.style.display = 'none';
   }
 }
 

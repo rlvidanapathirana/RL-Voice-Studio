@@ -867,8 +867,20 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   position: relative;
   width: 90px; height: 90px;
   display: flex; align-items: center; justify-content: center;
+  animation: float-anim 3s ease-in-out infinite;
 }
-.progress-ring-svg { transform: rotate(-90deg); }
+@keyframes float-anim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.progress-ring-svg { 
+  transform: rotate(-90deg); 
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.4)); }
+  50% { filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.8)); }
+}
 .progress-ring-bg {
   fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 5;
 }
