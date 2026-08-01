@@ -629,6 +629,7 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   background: rgba(255,255,255,0.03); border: 1px solid var(--border-md);
   padding: 8px 12px; border-radius: 12px; cursor: pointer;
   transition: var(--bounce); user-select: none;
+  min-width: 0; max-width: 100%; box-sizing: border-box;
 }
 .voice-pill:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
 .voice-pill.active {
@@ -817,6 +818,7 @@ kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); paddi
   .vc-layout { grid-template-columns: minmax(0, 1fr); min-width: 0; }
   .voice-cards { grid-template-columns: minmax(0, 1fr); min-width: 0; }
   .guide-grid { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+  .voice-pills { grid-template-columns: minmax(0, 1fr); min-width: 0; }
 
   .slider-row { gap: 12px; }
   .main-actions { flex-direction: column; gap: 12px; }
