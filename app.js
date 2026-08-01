@@ -765,12 +765,12 @@ async function speakLocalMMS(text, v) {
   }
 
   if (!hfSynthesizer) {
-    // Attempt WebGPU, fallback to WASM if not supported
+    // VITS models (MMS) often fail on WebGPU due to GatherElements rank issues.
+    // We force WebAssembly (WASM) for stability.
     try {
-      hfSynthesizer = await hfPipeline('text-to-speech', v.voiceName, { device: 'webgpu' });
-    } catch (e) {
-      console.warn("WebGPU not available, falling back to WebAssembly (WASM).", e);
       hfSynthesizer = await hfPipeline('text-to-speech', v.voiceName, { device: 'wasm' });
+    } catch (e) {
+      throw new Error("Failed to load local model: " + e.message);
     }
   }
 
